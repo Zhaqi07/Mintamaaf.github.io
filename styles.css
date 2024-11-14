@@ -1,0 +1,155 @@
+/* styles.css */
+
+/* Menggunakan box-sizing agar padding dan margin tidak mempengaruhi ukuran elemen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Menjaga konten di atas dan tidak di tengah */
+    min-height: 100vh; /* Membuat body menggunakan seluruh tinggi layar */
+    background-color: #f0f0f0;
+    opacity: 0; /* Awalnya tubuh halaman disembunyikan */
+    animation: fadeInBody 1s ease-out forwards; /* Menambahkan animasi masuk untuk seluruh halaman */
+    overflow-y: auto; /* Menambahkan scroll vertikal jika konten melebihi tinggi layar */
+    padding: 20px; /* Memberikan sedikit ruang di sekitar halaman */
+}
+
+/* Container untuk memusatkan popup */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    opacity: 0; /* Mulai dengan tidak terlihat */
+    animation: fadeIn 1s ease-out 0.5s forwards; /* Animasi masuk dengan delay */
+    min-height: 300px; /* Menjamin tinggi minimum untuk container */
+    margin-bottom: 20px; /* Memberikan ruang antara kontainer dan bagian bawah halaman */
+    overflow: auto; /* Menambahkan scroll jika konten meluap */
+}
+
+/* Popup dengan padding yang cukup untuk teks */
+.popup {
+    background-color: pink;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Agar popup responsif */
+    height: auto; /* Biarkan tinggi popup menyesuaikan konten */
+    max-height: 80vh; /* Batasi tinggi popup, jika konten melebihi ini, tampilkan scroll */
+    overflow-y: auto; /* Menambahkan scroll vertikal jika konten melebihi tinggi */
+}
+
+/* Mengatur teks agar tidak terpotong */
+h1 {
+    color: blacks;
+    font-size: 2.5em; /* Ukuran font lebih besar dan responsif */
+    margin-bottom: 20px;
+    word-wrap: break-word; /* Menghindari kata panjang terpotong */
+}
+
+p {
+    font-size: 1.2em; /* Ukuran font yang responsif */
+    color: #333;
+    margin-bottom: 20px;
+    word-wrap: break-word; /* Menghindari kata panjang terpotong */
+}
+
+/* Animasi fade-in untuk body */
+@keyframes fadeInBody {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animasi slide-in untuk container (popup) */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px); /* Mulai dari bawah */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Akhirnya berada di posisi normal */
+    }
+}
+
+/* Tombol untuk menghubungi via WhatsApp */
+button {
+    background-color: black;
+    color: pink;
+    border: none;
+    padding: 15px 30px; /* Meningkatkan padding untuk tombol yang lebih besar */
+    font-size: 18px; /* Ukuran font lebih besar */
+    border-radius: 50px; /* Membuat tombol menjadi bentuk pill (rounded) */
+    cursor: pointer;
+    margin-top: 20px;
+    width: auto;
+    transition: all 0.3s ease;
+    opacity: 0; /* Tombol dimulai dengan tidak terlihat */
+    animation: fadeInButton 1s ease-out 1s forwards; /* Animasi muncul dengan delay */
+}
+
+/* Animasi tombol muncul */
+@keyframes fadeInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Tombol dimulai sedikit lebih rendah */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Tombol akan berada di posisi normal */
+    }
+}
+
+/* Efek hover pada tombol */
+button:hover {
+    background-color: #333; /* Mengubah warna saat hover */
+    transform: scale(1.05); /* Efek zoom sedikit */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Memberikan bayangan untuk tombol */
+}
+
+button:focus {
+    outline: none; /* Menghilangkan outline ketika tombol difokuskan */
+}
+
+/* Menyediakan responsivitas tambahan */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    button {
+        font-size: 1em;
+        padding: 12px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 1.1em;
+        padding: 10px 20px;
+    }
+}
